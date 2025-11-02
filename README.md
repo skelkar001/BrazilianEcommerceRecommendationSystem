@@ -1,16 +1,16 @@
-# BrazilianEcommerceRecommendationSystem
+# **BrazilianEcommerceRecommendationSystem**
 
-## Capstone Project
+## **Capstone Project**
 Recommendation system for Brazilian E-commerce platform
 By; Shantanu Kelkar
 
-###Executive Summary
+### **Executive Summary**
 
 This report presents a comprehensive analysis of recommendation systems developed for a Brazilian ecommerce platform. The data comprises 96k unique orders, which include 32k unique products, spanning 93k unique customers
 
 There are 5 distinct recommendation systems implemented: Simple content-based filtering, Context-aware content-based filtering, Collaborative filtering, Popularity-based recommendations and Market basket analysis. Each approach addresses problems. In the real-world, a combination of these approaches will be needed to meet customer satisfaction and business objectives.
 
-### Exploratory Data Analysis: Key Insights
+### **Exploratory Data Analysis: Key Insights**
 
 The entire dataset comprised 7 different csv files:
 - orders.csv: **main** data set comprising all the orders for a Brazilian ecommerce platform
@@ -37,6 +37,48 @@ The average item price was 120 (currenncy is not known but probably is Brazilian
 
 #### Insight #5: Boleto and credit cards are most popular payment methods
 This is not a surprise that credit cards and boleto were the most popular payment methods. Boleto is unique to brazil and is popular due to the prevalence of cash economy
+
+#### Insight #6: Average order size was 1.2 items
+Over 86% of the orders had only single item
+
+
+### Recommendation Algorithms
+
+Five distinct approaches were implemented with each tapping into the unique aspects of product and/or user pattern
+
+##### Model 1: Simple content-filtering
+
+**Approach:** Product features (including review score) are leveraged to determine similarity (cosine similarity) amongst them. Top 10 most similar products, per this criteria, are recommended to the user for a given sample product 
+
+##### Model 2: Context-aware content-filtering
+
+**Approach:** In addition to product features (including review score), freight costs, payments data and state level popularity trends are considered. The final scoring is determined as a weighted average of product similarity, state popularity, review score, freight charges. This approach accounts for geographic variations, which can be significant
+
+##### Model 3: Collaborative filtering
+
+**Approach:** SURPRISE library was leveraged to experiment multiple recommendation algorithms such as SVD, NMF, KNNBasic (user- and item-based). Since most orders were single-item purchases and one-time customers, the efficacy of collaborative filtering will be limited. NMF was the best performer, followed by SVD and KNNbasic respectively.
+
+##### Model 4: Popularity-based recommendations (most purchased + highly rated)
+
+**Approach:** Taking inspiration from Amazon e-commerce experience, I also implemented most purchased and highest rated product features
+
+**Insights:** Each product was purchased 3.6 times on average. And top 10% of products (roughly 3.1k) accounted for 29% of all purchases. This shows the power i.e. impact of popularity based recommendation approach. 
+
+
+##### Model 5: Market-basket analysis
+
+Approach: Taking inspiration from Amazon's 'Customers who bought this item also bought...' recommendation, I implemented a market-basket analysis. This involved using a library called mlxtrend to unearth causal relationships between products. These relationships are called association rules.
+
+Insights: 
+ - Only 64 frequently purchased itemsets were found. Each itemset denotes a collection of items that were observed to be purchased together at a frequency greater than minimum support threshold specified in the code
+ - From these frequent itemsets, six association rules were discovered wherein
+   - Each rule showed very strong lift. This implies the likelihood 'consequent' purchase increases significantly
+   - Average confidence of 63%. This implies the rules are highly reliable
+   - But the support for each rule was low. This implies these may be niche combinations that are not purchased as frequently. But whenver it happens, the confidence level of predicting the consequent is high
+  
+
+### Conclusions
+
 
 
 
