@@ -77,7 +77,25 @@ Insights:
    - But the support for each rule was low. This implies these may be niche combinations that are not purchased as frequently. But whenver it happens, the confidence level of predicting the consequent is high
   
 
-### Conclusions
+### Conclusions & recommenation
+
+The data set used was highly skewed towards one-time purchases. This situation is a also called as a cold-start problem in the industry since it is hard to glean significant insights from user preferences. Collaborative filtering has limited impact in such situations. Hence, I also implemented content filtering and popularity based approaches. These approaches are shown to recommend the top N (N=10: default) products for a given sample product.
+
+A meaningful, production-ready recommendation system, for such an e-commerce platform, will be a combination of the approaches implemented above. This will allow capturing various patterns of user behavior, product interconnections and even geographical/regional trends. Additionally, a hybrid recommender could also be developed which will be a weighted average of the aforementioned recommendation approaches
+
+### Next steps
+
+I faced challenges in
+a) Implementing gridsearch - constantly running into 'kernel dead' error - due to large computational load. Hence, the respective code is commented out
+b) Implementing cross-validation: I had to reduce the folds to 3 from 5 to reduce the computational load
+
+The following aspects were not attempted due to time constraints but may be worth considering:
+a) Developing an overall hybrid recommender which would be weighted average of all the 5 approaches implemented
+b) Optimizing the weights used in approach #2 and approach #4
+
+
+
+
 
 
 
