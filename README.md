@@ -13,6 +13,8 @@ There are 5 distinct recommendation systems implemented: Simple content-based fi
 ### **Exploratory Data Analysis: Key Insights**
 
 Data source link: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+Data files are uploaded at this gdrive location: https://drive.google.com/drive/folders/1eYIplrKW7M-0P1CfJXAjjlXMZwjlGK5W?usp=sharing
+
 
 The entire dataset comprised 7 different csv files:
 - orders.csv: **main** data set comprising all the orders for a Brazilian ecommerce platform
